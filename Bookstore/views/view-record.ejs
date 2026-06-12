@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Record</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<div>
+    <div class="book-card">
+    <div class="card-header">
+        <h2>Book Details</h2>
+    </div>
+    
+    <div class="card-body">
+        <div class="detail-group">
+            <span class="label">Book No:</span>
+            <span class="value"><%= book.bookno %></span>
+        </div>
+
+        <div class="detail-group">
+            <span class="label">Book Name:</span>
+            <span class="value"><%= book.bookname %></span>
+        </div>
+
+        <div class="detail-group">
+            <span class="label">Issue Date:</span>
+            <span class="value">
+                <%= book.issuedate ? new Date(book.issuedate).toISOString().split('T')[0] : 'N/A' %>
+            </span>
+        </div>
+
+        <div class="detail-group">
+            <span class="label">Return Date:</span>
+            <span class="value">
+                <%= book.returndate ? new Date(book.returndate).toISOString().split('T')[0] : 'N/A' %>
+            </span>
+        </div>
+
+        <div class="detail-group">
+            <span class="label">Student Name:</span>
+            <span class="value"><%= book.studentname %></span>
+        </div>
+    </div>
+</div>
+<div align="center">
+
+    <a href="/view-book">Back</a>
+</div>
+</body>
+</html>

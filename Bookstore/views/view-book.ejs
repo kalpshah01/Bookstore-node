@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View book</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>View book</h1>
+    <a href="/">Add book</a>
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>BookNo</th>
+                <th>BookName</th>
+                <th>IssueDate</th>
+                <th>ReturnDate</th>
+                <th>StudentName</th>
+                
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% books.forEach((book) => { %>
+                <tr>
+                    <td><%= book.bookno %></td>
+                    <td><%= book.bookname %></td>
+                  <td><%= book.issuedate ? new Date(book.issuedate).toISOString().split('T')[0] : '' %>
+                   <td><%= book.returndate ? new Date(book.returndate).toISOString().split('T')[0] : '' %>
+                    <td><%= book.studentname %></td>
+
+                 <td>
+    <a class="btn btn-edit" href="/edit-book/<%= book.id %>">Edit</a>
+
+    <a class="btn btn-delete"
+       href="/delete-book/<%= book.id %>"
+       onclick="return confirm('Are you sure?')">
+       Delete
+    </a>
+
+    <a class="btn btn-view"
+       href="/view-record/<%= book.id %>">
+       View
+    </a>
+</td>
+                </tr>
+            <% }) %>
+
+            <% if (books.length === 0) { %>
+                <tr>
+                    <td colspan="6">No book found.</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>

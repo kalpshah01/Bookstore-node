@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit book</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Edit book</h1>
+    <form action="/update-book/<%= book.id %>" method="POST">
+        <label for="no">no</label>
+        <input type="number" name="bookno" value="<%= book.bookno %>">
+        <br/>
+        <label for="name">name</label>
+        <input type="text" name="bookname" value="<%= book.bookname %>" required>
+        <br/>
+
+
+     
+        <label for="issuedate">Issuedate</label>
+        <input type="date" name="issuedate" value="<%= book.issuedate ? book.issuedate.toISOString().slice(0, 10) : '' %>">
+        
+    <br/>
+    <label for="returndate">Return Date</label>
+        <input type="date" name="returndate" value="<%= book.returndate ? book.returndate.toISOString().slice(0, 10) : '' %>">
+
+        <br/>
+        <label for="studentname">Student Name</label>
+        <input type="text" name="studentname" value="<%= book.studentname%>"><br/>
+
+        <button type="submit">Update</button>
+        <a href="/view-book">Cancel</a>
+    </form>
+</body>
+</html>
